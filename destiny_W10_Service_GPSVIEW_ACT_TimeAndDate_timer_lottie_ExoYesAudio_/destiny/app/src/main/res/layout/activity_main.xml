@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- 天氣資訊 (地區, 時間等) -->
+
+    <!-- 天氣狀態 (晴天、多雲等) -->
+    <TextView
+        android:id="@+id/tv_weather_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
+        android:text="天氣資訊載入中..."
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/lottie_weather_animation"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_weather_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="-"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_weather_info"
+        app:layout_constraintTop_toBottomOf="@id/tv_weather_info" />
+
+    <!-- *** 核心修改：用 LottieAnimationView 取代 ImageView *** -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_weather_animation"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:lottie_rawRes="@raw/weather_animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_weather_info"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_weather_status"/>
+
+    <!-- 降雨預報 ListView -->
+    <ListView
+        android:id="@+id/lv_forecast"
+        android:layout_width="370dp"
+        android:layout_height="340dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_switch_to_second"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_weather_status"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+    <!-- 開始按鈕 -->
+    <Button
+        android:id="@+id/btn_switch_to_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="76dp"
+        android:text="開始"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
